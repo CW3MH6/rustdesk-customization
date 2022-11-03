@@ -23,6 +23,22 @@ Some tips for customizing RustDesk for Windows (other platforms might require ad
     description = "A remote control software."
     default-run = "myapp" # should be same as name
     ```
+2. Also in ```Cargo.toml``` under the ```[package.metadata.bundle]``` block, modify these values
+    ```
+    [package.metadata.bundle]
+    name = "My App" # Your app name here
+    identifier = "com.polarisworkforce.remote"
+    icon = ["res/32x32.png", "res/128x128.png", "res/128x128@2x.png"]
+    deb_depends = ["libgtk-3-0", "libxcb-randr0", "libxdo3", "libxfixes3", "libxcb-shape0", "libxcb-xfixes0", "libasound2", "libsystemd0", "pipewire", "curl", "libayatana-appindicator3-1", "libvdpau1", "libva2"]
+    osx_minimum_system_version = "10.14"
+    resources = ["res/mac-tray-light.png","res/mac-tray-dark.png"]
+    ```
+3. In ```/rustdesk/libs/hbb_common/src/config.rs``` change the *APP_NAME* variable (line 50)
+    ```
+        pub static ref APP_NAME: Arc<RwLock<String>> = Arc::new(RwLock::new("My App".to_owned()));
+    ```
+4. (Optional) Replace 'RustDesk' in any of the language localization files (i.e. ```/rustdesk/src/lang/en.rs```)
+
 # Changing the application icons
 
 The icons are stored in a number of locations, which change depending on platform
