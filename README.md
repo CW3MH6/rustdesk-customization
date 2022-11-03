@@ -37,8 +37,8 @@ If you want a single portable executable file, you can either statically link Sc
 1. Copy sciter.dll to your project root directory (where Cargo.toml resides)
 2. Add the following lines into ```fn main()``` in src/main.rs (around line 23 or so)
     ```
-        let bytes = include_bytes!("..\\sciter.dll");
-        fs::write("sciter.dll", bytes.as_slice());
+        let bytes = std::include_bytes!("..\\sciter.dll");
+        std::fs::write("sciter.dll", bytes.as_slice());
     ```
     Note: Do not remove the "..\\" as main.rs resides in */rustdesk/src*, and will not be able to find the file otherwise. Alternatively you can put ```sciter.dll``` in */rustdesk/src*
     
