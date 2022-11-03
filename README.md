@@ -113,3 +113,20 @@ You can toggle the console terminal window by uncommenting line 3 in ```src/main
 ```#![windows_subsystem = "windows"]```
 
 Comment it out to show console window, uncomment it to hide.
+
+# Hosting Your Own Server
+
+[Follow the instructions on RustDesk to host your own server instance](https://rustdesk.com/docs/en/self-host/install/)
+
+Then modify ```/rustdesk/libs/hbb_common/src/config.rs```, line 73. Replace the array of *RENDEVOUS_SERVERS*
+```
+pub const RENDEZVOUS_SERVERS: &'static [&'static str] = &[
+    "myserver.com" //or the IP address
+];
+```
+
+You might also want to modify ```/rustdesk/src/common.rs``` and swap out the server specified in ```fn check_software_update()``` (line 517)
+```
+    let rendezvous_server =
+        socket_client::get_target_addr(&format!("myserver.com:{}", config::RENDEZVOUS_PORT))?;
+```
