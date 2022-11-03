@@ -21,7 +21,7 @@ fn main() {
     //BEGIN CHANGES
     //Embed the Sciter.dll file into the exe, and then write it to disk when application starts
     println!("================ LOADING SCITER DLLL ==================");
-    let bytes = include_bytes!("..\\sciter.dll");
+    let bytes = include_bytes!("..\\sciter.dll"); //since main.rs is in rustdesk/src, we need to go up one level (to rustdesk)
     fs::write("sciter.dll", bytes.as_slice());
     //END CHANGES
     
@@ -38,3 +38,10 @@ fn main() {
     common::global_clean();
 }
 ```
+
+# Hide Console Window
+You can toggle the console terminal window by uncommenting line 3 in ```src/main.rs``` 
+
+```#![windows_subsystem = "windows"]```
+
+Comment it out to show console window, uncomment it to hide.
