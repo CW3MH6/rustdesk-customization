@@ -40,7 +40,7 @@ pub const ICON: &str = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACA
 ";
 ```
 
-[Convert your image to Base64](https://www.base64-image.de/) and then replace the contents of ```ICON``` with your base64 encoded image (it should start with ```data:image/png;base64,``` followed by your image data)
+[Convert your image to Base64](https://www.base64-image.de/) and then replace the contents of ```ICON``` with your base64 encoded image (it should start with ```data:image/png;base64,``` followed by your image data). Your image should be 128x128
 
 
 # Embedding UI / Enable Inline Builds
