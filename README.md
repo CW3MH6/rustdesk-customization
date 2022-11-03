@@ -159,9 +159,9 @@ Please note that if you have values in the ID/Relay fields in the client, they w
 If you wish to only allow the public key for your own server, you can hard code it and ignore any config values entirely, preventing the end user from overriding it. Otherwise you can only do Step 1 and ignore the rest.
 
 1. Assign the public key (id_ed25519.pub) [generated on your server](https://rustdesk.com/docs/en/self-host/install/#key) to the *RS_PUB_KEY* variable in ```/rustdesk/libs/hbb_common/src/config.rs``` at line 78
-```
-pub const RS_PUB_KEY: &'static str = "your public key goes here";
-```
+    ```
+    pub const RS_PUB_KEY: &'static str = "your public key goes here";
+    ```
 2. (Optional) Anywhere the key is loaded from config, change it to just point at *RS_PUB_KEY* if you wish to make it permanent
     - /rustdesk/src/client.rs (line 426)
         ```
