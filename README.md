@@ -1,5 +1,11 @@
-# rustdesk-customization
+# Customizing RustDesk
 Some tips for customizing RustDesk for Windows (other platforms might require additional changes)
+
+1. Changing the application name
+2. Changing the application icons
+3. [Embedding the UI resources](#embedding-ui--enable-inline-builds)
+4. Embedding sciter.dll
+5. Toggling the console window
 
 # Embedding UI / Enable Inline Builds
 In order to include the applicatin's UI resources in the executable, you will need to enable the ```inline``` feature. This compiles the application resources (*src/ui*) into the executable so you do not have to deploy them yourself.
@@ -29,12 +35,18 @@ If you want a single portable executable file, you can either statically link Sc
 
 
 1. Copy sciter.dll to your project root directory (where Cargo.toml resides)
-2. Add the following lines into ```fn main()``` in src/main.rs
+2. Add the following lines into ```fn main()``` in src/main.rs (around line 23 or so)
     ```
         let bytes = include_bytes!("..\\sciter.dll");
         fs::write("sciter.dll", bytes.as_slice());
     ```
     Note: Do not remove the "..\\" as main.rs resides in */rustdesk/src*, and will not be able to find the file otherwise. Alternatively you can put ```sciter.dll``` in */rustdesk/src*
+    
+    Also please make sure you are putting this in the ```fn main()``` that is targeting Windows, where it specifies
+    ```
+    #[cfg(not(any(target_os = "android", target_os = "ios", feature = "cli")))]
+    ```
+    as there are other ```fn main()``` that target OTHER platforms.
 
     The function should now look like so:
     ```
