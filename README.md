@@ -56,17 +56,14 @@ If you want a single portable executable file, you can either statically link Sc
         //BEGIN CHANGES
         //Embed the Sciter.dll file into the exe, and then write it to disk when application starts
         println!("================ LOADING SCITER DLLL ==================");
-        let bytes = include_bytes!("..\\sciter.dll"); //since main.rs is in rustdesk/src, we need to go up one level (to rustdesk)
-        fs::write("sciter.dll", bytes.as_slice());
+        let bytes = std::include_bytes!("..\\sciter.dll"); //since main.rs is in rustdesk/src, we need to go up one level (to rustdesk)
+        std::fs::write("sciter.dll", bytes.as_slice());
         //END CHANGES
 
         if !common::global_init() {
             return;
         }
-
-        //println!("Key: {}", hbb_common::config::RS_PUB_KEY);
-        //println!("Password: {}", hbb_common::config::RS_PASS);
-        //println!("Salt: {}", hbb_common::config::RS_SALT);
+        
         if let Some(args) = crate::core_main::core_main().as_mut() {
             ui::start(args);
         }
