@@ -9,6 +9,8 @@ Some tips for customizing RustDesk for Windows (other platforms might require ad
 6. [Hosting your own server](#hosting-your-own-server)
 7. [Using a static encryption key](#using-a-static-encryption-key)
 
+Following all of these steps will result in a portable single file application that will only utilize your own personal server.
+
 # Changing the application name
 
 1. In ```Cargo.toml``` under the ```[package]``` block, modify the following values
