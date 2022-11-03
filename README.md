@@ -29,7 +29,7 @@ In order to include the applicatin's UI resources in the executable, you will ne
     Run ```python res/inline-sciter.py``` every time you want to build the UI resources again (i.e. every time you modify the UI)
     
     If it complains that it cannot find python or the command is unrecognized, you need to install the latest version of [Python 3](https://www.python.org/downloads/) and add it to your PATH environment variable.
-
+3. Now build and run application via ```cargo run``` or ```cargo build```
 # Embedding Sciter.dll
 If you want a single portable executable file, you can either statically link Sciter, or embed the DLL. Statically linking it requires you [license Sciter](https://sciter.com/prices/), which costs money--so I went with embedding the dll.
 
