@@ -2,7 +2,7 @@
 Some tips for customizing RustDesk for Windows (other platforms might require additional changes)
 
 1. [Changing the application name](#changing-the-application-name)
-2. [Changing the application icons](#)
+2. [Changing the application icons](#changing-the-application-icons)
 3. [Embedding the UI resources](#embedding-ui--enable-inline-builds)
 4. [Embedding sciter.dll](#embedding-sciterdll)
 5. [Toggling the console window](#hide-console-window)
