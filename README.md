@@ -154,3 +154,28 @@ You might also want to modify ```/rustdesk/src/common.rs``` and swap out the ser
 ```
 
 Please note that if you have values in the ID/Relay fields in the client, they will override these static values, as they are loaded from a config file in ```%APPDATA%/AppName/config/AppName.toml```, where *AppName* is RustDesk or whatever name you customized it with in the [Changing the application name](#changing-the-application-name) section. So you may want to delete this file.
+
+# Using a static encryption key
+If you wish to only allow the public key for your own server, you can hard code it and ignore any config values entirely, preventing the end user from overriding it. Otherwise you can only do Step 1 and ignore the rest.
+
+1. Assign the public key (id_ed25519.pub) [generated on your server](https://rustdesk.com/docs/en/self-host/install/#key) to the *RS_PUB_KEY* variable in ```/rustdesk/libs/hbb_common/src/config.rs``` at line 78
+```
+pub const RS_PUB_KEY: &'static str = "your public key goes here";
+```
+2. (Optional) Anywhere the key is loaded from config, change it to just point at *RS_PUB_KEY* if you wish to make it permanent
+    - /rustdesk/src/client.rs (line 426)
+        ```
+        let rs_pk = get_rs_pk(hbb_common::config::RS_PUB_KEY); //remove the if statement and just assign it directly
+        ```
+    - /rustdesk/src/server.rs (line 235)
+        ```
+        let mut licence_key = hbb_common::config::RS_PUB_KEY.to_owned(); //was Config::get_option("key");
+        ```
+    - /rustdesk/src/platform/windows.rs (line 1356)
+        ```
+        lic.key = hbb_common::config::RS_PUB_KEY.to_owned(); //was get_reg("Key");
+        ```
+    - /rustdesk/src/ui_session_interface.rs (line 1401)
+        ```
+        let mut key = hbb_common::config::RS_PUB_KEY.to_owned(); //was options.remove("key").unwrap_or("".to_owned());
+        ```
