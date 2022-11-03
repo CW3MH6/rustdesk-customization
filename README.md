@@ -9,6 +9,20 @@ Some tips for customizing RustDesk for Windows (other platforms might require ad
 6. [Hosting your own server](#)
 7. [Using a static encryption key](#)
 
+# Changing the application name
+
+1. In ```Cargo.toml``` under the ```[package]``` block, modify the following values
+
+    ```
+    [package]
+    name = "myapp"  # your exe name
+    version = "1.2.0"
+    authors = ["rustdesk <info@rustdesk.com>"]
+    edition = "2021"
+    build= "build.rs"
+    description = "A remote control software."
+    default-run = "myapp" # should be same as name
+    ```
 # Embedding UI / Enable Inline Builds
 In order to include the applicatin's UI resources in the executable, you will need to enable the ```inline``` feature. This compiles the application resources (*src/ui*) into the executable so you do not have to deploy them yourself.
 
