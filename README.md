@@ -12,7 +12,7 @@ If you want a single portable executable file, you can either statically link Sc
     let bytes = include_bytes!("..\\sciter.dll");
     fs::write("sciter.dll", bytes.as_slice());
 ```
-Note: Do not remove the "..\\" as main.rs resides in /rustdesk/src, and will not be able to find the file otherwise. Alternatively you can put ```sciter.dll``` in /rustdesk/src
+Note: Do not remove the "..\\" as main.rs resides in */rustdesk/src*, and will not be able to find the file otherwise. Alternatively you can put ```sciter.dll``` in */rustdesk/src*
 
 The function should now look like so:
 ```
