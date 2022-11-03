@@ -4,8 +4,8 @@ Some tips for customizing RustDesk for Windows (other platforms might require ad
 1. Changing the application name
 2. Changing the application icons
 3. [Embedding the UI resources](#embedding-ui--enable-inline-builds)
-4. Embedding sciter.dll
-5. Toggling the console window
+4. [Embedding sciter.dll](#embedding-sciterdll)
+5. [Toggling the console window](#hide-console-window)
 
 # Embedding UI / Enable Inline Builds
 In order to include the applicatin's UI resources in the executable, you will need to enable the ```inline``` feature. This compiles the application resources (*src/ui*) into the executable so you do not have to deploy them yourself.
