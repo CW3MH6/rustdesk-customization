@@ -6,8 +6,8 @@ Some tips for customizing RustDesk for Windows (other platforms might require ad
 3. [Embedding the UI resources](#embedding-ui--enable-inline-builds)
 4. [Embedding sciter.dll](#embedding-sciterdll)
 5. [Toggling the console window](#hide-console-window)
-6. [Hosting your own server](#)
-7. [Using a static encryption key](#)
+6. [Hosting your own server](#hosting-your-own-server)
+7. [Using a static encryption key](#using-a-static-encryption-key)
 
 # Changing the application name
 
