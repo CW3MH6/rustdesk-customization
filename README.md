@@ -118,7 +118,13 @@ Comment it out to show console window, uncomment it to hide.
 
 [Follow the instructions on RustDesk to host your own server instance](https://rustdesk.com/docs/en/self-host/install/)
 
-Then modify ```/rustdesk/libs/hbb_common/src/config.rs```, line 73. Replace the array of *RENDEVOUS_SERVERS*
+Before proceeding, verify your server works with your existing client, by overriding the ID and Relay Server values in the client.
+
+[See RustDesk docs for how to do this](https://rustdesk.com/docs/en/self-host/install/#step-3--set-hbbshbbr-address-on-client-side)
+
+You will also need to specify the public key you generated on your server. Once you have verified your server is working, you can make your changes permanent below.
+
+Modify ```/rustdesk/libs/hbb_common/src/config.rs```, line 73. Replace the array of *RENDEVOUS_SERVERS*
 ```
 pub const RENDEZVOUS_SERVERS: &'static [&'static str] = &[
     "myserver.com" //or the IP address
@@ -130,3 +136,5 @@ You might also want to modify ```/rustdesk/src/common.rs``` and swap out the ser
     let rendezvous_server =
         socket_client::get_target_addr(&format!("myserver.com:{}", config::RENDEZVOUS_PORT))?;
 ```
+
+Please note that if you have values in the ID/Relay fields in the client, they will override these static values, as they are loaded from a config file in ```%APPDATA%/AppName/config/AppName.toml```, where *AppName* is RustDesk or whatever name you customized it with in the [Changing the application name](#changing-the-application-name) section. So you may want to delete this file.
