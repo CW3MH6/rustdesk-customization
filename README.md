@@ -1,3 +1,6 @@
+# Notes
+RustDesk has moved to using Flutter as the UI framework. This guide was written before this change, and parts may be outdated.
+
 # Customizing RustDesk
 Some tips for customizing RustDesk for Windows (other platforms might require additional changes)
 
